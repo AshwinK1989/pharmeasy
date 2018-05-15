@@ -24,7 +24,7 @@ public class WebDriverFactory {
 				//capabilities.setCapability("appPackage", "com.shaadi.android");
 				capabilities.setCapability(AndroidMobileCapabilityType.APP_WAIT_ACTIVITY, "com.shaadi.android.*");
 
-				File f = new File(sPlatformAppPath);
+				File f = new File(System.getProperty("user.dir")+sPlatformAppPath);
 				capabilities.setCapability("app", f.getAbsolutePath());
 				driver = new AndroidDriver(new URL("http://" + sPlatformIpAddress + ":" + port + "/wd/hub"),
 						capabilities);
