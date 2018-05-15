@@ -1,0 +1,184 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>sevenpounds</groupId>
+  <artifactId>sevenpounds</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
+
+  <name>sevenpounds</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+             <source>1.8</source>
+             <target>1.8</target>
+           </configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.21.0</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<testErrorIgnore>true</testErrorIgnore>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>TestNG.xml</suiteXmlFile>
+                    </suiteXmlFiles>			 
+				</configuration>
+
+			</plugin>
+
+			<plugin>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
+				<version>3.8.0</version>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>verify</phase>
+						<goals>
+							<goal> generate</goal>
+						</goals>
+						<configuration>
+							<projectName>sevenpounds</projectName>
+							<outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
+							<cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+						</configuration>
+
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+            <groupId>ch.fortysix</groupId>
+            <artifactId>maven-postman-plugin</artifactId>
+            <version>0.1.6</version>
+                <executions>
+                   <execution>
+                       <id>Report Generation</id>
+                       <phase>verify</phase>
+                       <goals>
+                           <goal>send-mail</goal>
+                       </goals>
+                       <inherited>true</inherited>
+                       <configuration>
+                          <!-- From Email address -->
+                          <from>ashu271989@gmail.com</from>
+                          <!-- Email subject -->
+                          <subject>Cucumber Test Automation Report</subject>
+                          <!-- Fail the build if the mail doesn't reach -->
+                          <failonerror>false</failonerror>
+                          <!-- Email Body Content -->
+                          <htmlMessage>
+                                    <![CDATA[
+                                    <p>New test build triggered!</p>
+                                    <p>Attached html file contains the test result status</p> 
+                                    ]]>
+                          </htmlMessage>
+                          <!-- host -->
+                          <mailhost>smtp.gmail.com</mailhost>
+                          <!-- port of the host -->
+                          <mailport>465</mailport>
+                          <mailssl>true</mailssl>
+                          <mailAltConfig>true</mailAltConfig>
+                          <!-- Email Authentication(Username and Password) -->
+                          <mailuser>ashu271989@gmail.com</mailuser>
+                          <mailpassword>karangutkar19820985636</mailpassword>
+                          <receivers>
+                               <!-- To Email address -->
+                               <receiver>ashwin.karangutkar@gmail.com</receiver>
+                          </receivers>
+        
+                                <fileSets>
+                                        <fileSet>
+                                                <directory>/Users/ashwin/work/projects/test-automation/com.airport/target/cucumber-report-html/cucumber-html-reports</directory>
+                                                <includes>
+                                                        <include>overview-failures.html</include>
+                                                </includes>
+                                        </fileSet>
+                                </fileSets>
+                        </configuration>
+                </execution>
+        </executions>
+</plugin>
+
+		</plugins>
+	</build>
+
+  <dependencies>
+    <dependency>
+    <groupId>io.appium</groupId>
+    <artifactId>java-client</artifactId>
+    <version>4.1.2</version>
+  </dependency>
+  
+  <dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>6.14.3</version>
+    <scope>verify</scope>
+   
+  </dependency>
+  
+  <dependency>
+    <groupId>info.cukes</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>1.2.5</version>
+   <scope>verify</scope>
+     
+</dependency>
+<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-core</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>2.12.2</version>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-jvm-deps</artifactId>
+			<version>1.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-html</artifactId>
+			<version>0.2.6</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>1.2.5</version>
+			<scope>verify</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.3</version>
+		</dependency>
+		
+		<dependency>
+    <groupId>com.android.tools.ddms</groupId>
+    <artifactId>ddmlib</artifactId>
+    <version>24.5.0</version>
+</dependency>
+  </dependencies>
+</project>
