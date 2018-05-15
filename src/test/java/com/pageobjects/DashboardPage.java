@@ -13,6 +13,18 @@ public class DashboardPage {
 		this.driver = driver;
 	}
 	
+   public void clickOnGotItButtons ()  {
+		   
+		   GenericMethods.click(driver, ConstantLocators.btnGotIt);
+		   GenericMethods.click(driver, ConstantLocators.btnGotIt);
 
+	   }
+	
+	public void clickOnSearchButton() {
+     
+		clickOnGotItButtons();
+		GenericMethods.click(driver, ConstantLocators.tabSearch);
 
+	}
+	
 }

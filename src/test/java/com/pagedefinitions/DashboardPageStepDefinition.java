@@ -1,35 +1,32 @@
 package com.pagedefinitions;
 
+import com.contexts.TestContext;
 import com.pageobjects.DashboardPage;
-import com.setup.WebSetup;
+import com.pageobjects.SignInPage;
+import com.setup.MobileSetup;
+
 import cucumber.api.java.en.*;
 
-public class DashboardPageStepDefinition extends WebSetup {
-	//DashboardPage dp;
+public class DashboardPageStepDefinition extends MobileSetup {
 
-	@Given("^You enter \"([^\"]*)\"$")
-	public void you_enter(String arg1) throws Throwable {
-	   
-		System.out.println("Hello");
-	}
-
-	@And("^Click on Login button$")
-	public void click_on_Login_button() throws Throwable {
-		System.out.println("Hello");
-
-	}
-
-	@And("^And you enter \"([^\"]*)\"$")
-	public void and_you_enter(String arg1) throws Throwable {
-		System.out.println("Hello");
-
-	}
-
-	@Then("^Check show you are on Dashboard Page$")
-	public void check_show_you_are_on_Dashboard_Page() throws Throwable {
-		System.out.println("Hello");
-
-	}
 	
+	DashboardPage dashboardpage;
+    TestContext testContext;
+
+
+    public DashboardPageStepDefinition(TestContext context) {
+    	
+        testContext = context;
+        dashboardpage = testContext.getPageObjectManager().getDashboardPage();
+        		
+    }
+    
+    @And("^Click on Search button$")
+	public void click_On_Search_Button() {
+		
+    	dashboardpage.clickOnSearchButton();
+	}
+    
+
 
 }

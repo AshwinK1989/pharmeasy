@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name ="Shaadi Suite" parallel="tests" thread-count = "2" >
+
+<test name="Shaadi Test">
+<parameter name="Platform" value="Device"/>    
+<parameter name="deviceName" value="Moto G5 Plus"/>    
+<parameter name="platformName" value="Android"/>    
+<parameter name="platformVersion" value="7.0"/>    
+<parameter name="appPackage" value=""/>  
+<parameter name="appActivity" value=""/>    
+<parameter name="sPlatformAppPath" value="/Users/ashwin/work/learning/sevenpounds/resources/shaadi.apk"/>    
+<parameter name="sPlatformIpAddress" value="127.0.0.1"/>    
+<parameter name="deviceId" value="ZY223XL54B"/>    
+<parameter name="port" value="4723"/>    
+
+<classes>
+<class name ="com.testrunner.TestRunner"/>
+</classes>
+</test>
+
+
+</suite>

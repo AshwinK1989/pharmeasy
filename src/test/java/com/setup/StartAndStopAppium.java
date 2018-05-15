@@ -15,8 +15,6 @@ public class StartAndStopAppium {
 
 	public static void startAppiumServer(String sPlatformIpAddress, String port) {
 
-		//service = AppiumDriverLocalService.buildDefaultService();
-		//service.start();
 		service = AppiumDriverLocalService
 				.buildService(new AppiumServiceBuilder()
 						.usingDriverExecutable(new File("/usr/local/bin/node"))
@@ -25,21 +23,7 @@ public class StartAndStopAppium {
 										"/Applications/Appium.app/Contents/Resources/app/node_modules/appium/build/lib/main.js"))
 						.withIPAddress("127.0.0.1").usingPort(4723));
 		service.start();
-		/*cap = new DesiredCapabilities();
-		cap.setCapability("noReset", "false");
-		
-		//Build the Appium service
-		builder = new AppiumServiceBuilder();
-		builder.withIPAddress("0.0.0.0");
-		builder.usingPort(4723);
-		builder.withCapabilities(cap);
-		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
-		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
-		
-		//Start the server with the builder
-		service = AppiumDriverLocalService.buildService(builder);
-		service.start();
-*/
+	
 	}
 
 	public static void stopAppiumServer() {
