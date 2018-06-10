@@ -23,4 +23,4 @@ Run the TestNG.xml file present under resources folder. OR Right click on the pr
 
 Make sure you have appium and related dependencies installed on your system.
 
-The report will be present in file: /pharmeasy/target/html/index.html
+The report will be present in file: /pharmeasy/target/site/cucumber-pretty/index.html
