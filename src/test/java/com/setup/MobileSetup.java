@@ -15,20 +15,7 @@ public class MobileSetup {
 					appPackage, appActivity, sPlatformAppPath, sPlatformIpAddress, deviceId, port);
 			setWebDriver(driver);
 
-		} else if (platform.equalsIgnoreCase("Chrome")) {
-			System.out.println(platform);
-
-			System.setProperty("webdriver.chrome.driver", "Log4jConfiguration/chromedriver");
-			AppiumDriver driver = new WebDriverFactory().create(platform, deviceName, platformName, platformVersion,
-					appPackage, appActivity, sPlatformAppPath, sPlatformIpAddress, deviceId, port);
-			setWebDriver(driver);
-
-		} else {
-			AppiumDriver driver = new WebDriverFactory().create(platform, deviceName, platformName, platformVersion,
-					appPackage, appActivity, sPlatformAppPath, sPlatformIpAddress, deviceId, port);
-			setWebDriver(driver);
-
-		}
+		} 
 
 	}
 

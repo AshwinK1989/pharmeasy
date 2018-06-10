@@ -5,16 +5,16 @@ import com.setup.MobileSetup;
 
 public class TestContext extends MobileSetup {
 
-	 private PageObjectManager pageObjectManager;
+	private PageObjectManager pageObjectManager;
 
-	    public TestContext() {
+	public TestContext() {
 
-	        pageObjectManager = new PageObjectManager(getDriver());
+		pageObjectManager = new PageObjectManager(getDriver());
 
-	    }
+	}
 
-	    public PageObjectManager getPageObjectManager() {
+	public PageObjectManager getPageObjectManager() {
 
-	        return pageObjectManager;
-	    }
+		return pageObjectManager;
+	}
 }

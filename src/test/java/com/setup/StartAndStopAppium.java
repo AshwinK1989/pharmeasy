@@ -10,8 +10,7 @@ public class StartAndStopAppium {
 
 	
 	private static AppiumDriverLocalService service;
-	private static AppiumServiceBuilder builder;
-	private static DesiredCapabilities cap;
+	
 
 	public static void startAppiumServer(String sPlatformIpAddress, String port) {
 
@@ -20,7 +19,7 @@ public class StartAndStopAppium {
 						.usingDriverExecutable(new File("/usr/local/bin/node"))
 						.withAppiumJS(
 								new File(
-										"/Applications/Appium.app/Contents/Resources/app/node_modules/appium/build/lib/main.js"))
+										"/usr/local/lib/node_modules/appium/build/lib/main.js"))
 						.withIPAddress("127.0.0.1").usingPort(4723));
 		service.start();
 	

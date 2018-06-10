@@ -7,7 +7,7 @@ import com.setup.MobileSetup;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
-@CucumberOptions(features = "Features", format = { "pretty", "html:target/html/" }, glue = "com.pagedefinitions")
+@CucumberOptions(features = "Features", format = {"json:target/cucumber.json", "html:target/site/cucumber-pretty", "rerun:target/rerun.txt"}, glue = "com.pagedefinitions")
 public class TestRunner extends AbstractTestNGCucumberTests {
 
 	@BeforeClass

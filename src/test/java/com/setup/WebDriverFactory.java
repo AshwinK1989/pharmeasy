@@ -2,6 +2,8 @@ package com.setup;
 
 import java.io.File;
 import java.net.URL;
+import java.time.Duration;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.AppiumDriver;
@@ -21,45 +23,14 @@ public class WebDriverFactory {
 				capabilities.setCapability("deviceName", deviceName);
 				capabilities.setCapability("platformName", platformName);
 				capabilities.setCapability("platformVersion", platformVersion);
-				//capabilities.setCapability("appPackage", "com.shaadi.android");
-				capabilities.setCapability(AndroidMobileCapabilityType.APP_WAIT_ACTIVITY, "com.shaadi.android.*");
-
+				capabilities.setCapability("automationName", "UiAutomator2");
+				capabilities.setCapability("autoGrantPermissions",true);
 				File f = new File(System.getProperty("user.dir")+sPlatformAppPath);
 				capabilities.setCapability("app", f.getAbsolutePath());
 				driver = new AndroidDriver(new URL("http://" + sPlatformIpAddress + ":" + port + "/wd/hub"),
 						capabilities);
 
-				break;
 
-			case "Cloud":
-
-				DesiredCapabilities caps = new DesiredCapabilities();
-				caps.setCapability("deviceName", deviceName);
-				caps.setCapability("platformName", platformName);
-				caps.setCapability("platformVersion", platformVersion);
-				caps.setCapability("appiumVersion", "1.5.3");
-				caps.setCapability("maxDuration", "10800");
-				caps.setCapability("idleTimeout", 1000);
-				caps.setCapability("app", "sauce-storage:JabongOnlineFashionShopping.apk");
-				driver = new AndroidDriver(new URL("http://" + "bigdecisions" + ":"
-						+ "4215e133-8d5d-40dc-b44d-4e265f8bce6e" + "@ondemand.saucelabs.com:80/wd/hub"), caps);
-
-				break;
-
-			case "Emulator":
-				Runtime.getRuntime().exec("open -a " + "/Applications/Genymotion.app/Contents/MacOS/player.app"
-						+ " --args --vm-name " + "GoogleNexus");
-				Thread.sleep(40000);
-				DesiredCapabilities emul = new DesiredCapabilities();
-				emul.setCapability("deviceName", deviceName);
-				emul.setCapability("platformName", platformName);
-				emul.setCapability("platformVersion", platformVersion);
-				emul.setCapability("appPackage", appPackage);
-				emul.setCapability("appActivity", appActivity);
-				emul.setCapability("udid", deviceId);
-
-				driver = new AndroidDriver<WebElement>(new URL("http://" + sPlatformIpAddress + ":" + port + "/wd/hub"),
-						emul);
 				break;
 
 			default:

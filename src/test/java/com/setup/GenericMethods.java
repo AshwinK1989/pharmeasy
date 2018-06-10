@@ -1,17 +1,14 @@
 package com.setup;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
 
 
 
@@ -21,47 +18,25 @@ public class GenericMethods {
 		waitToClickMethod(driver, sLocator);
 		driver.findElement(By.xpath(sLocator)).click();
 	}
-
+		
 	public static void input(WebDriver driver, String sLocator, String inputValue) {
 		waitToClickMethod(driver, sLocator);
 		driver.findElement(By.xpath(sLocator)).sendKeys(inputValue);
 	}
 
-	public static void clickAndroidBackButton(WebDriver driver) {
-		((AndroidDriver) driver).pressKeyCode(4);
-	}
 
-	public static String getElementText(WebDriver driver, String sLocator) {
-		waitMethod(driver, sLocator);
-		String elementText = driver.findElement(By.xpath(sLocator)).getText();
-		return elementText;
-	}
-
-	 public static void swipeLeft (WebDriver driver) {
-
-       int screenWidth = driver.manage ().window ().getSize ().getWidth ();
-       int screenHeight = driver.manage ().window ().getSize ().getHeight ();
-       // Swipe Left
-       int startx = screenWidth / 9;
-       int endx = screenWidth * 8 / 9;
-       int starty = screenHeight / 2;
-       int endy = screenHeight / 2;
-       ((AppiumDriver) driver).swipe (startx, starty, endx, endy, 5000);
-
-     }
-	    
-	 
-	
-
-	public static MobileElement scrollDown(WebDriver driver, String text, String resourceid, String sClassName) {
+	public static MobileElement scrollDown(WebDriver driver, String sLocator) {
 		
 		try {
 		
-		MobileElement element = driver.findElement(MobileBy.AndroidUIAutomator(
-				"new UiScrollable(new UiSelector().resourceId(\""+resourceid+"\")).getChildByText("
-				+ "new UiSelector().className(\""+sClassName+"\"),\""+text+"\")"));
-		return element;
-		
+			while (getElement(driver,sLocator )==null)  {
+				
+			Dimension size = driver.manage().window().getSize();
+			int starty = (int) (size.height * 0.80);
+			int endy = (int) (size.height * 0.20);
+			int startx = size.width / 2;
+			((AndroidDriver) driver).swipe(startx, starty, startx, endy, 3000);
+			}
 		}
 		catch(Exception e)  {
 			
@@ -69,6 +44,20 @@ public class GenericMethods {
     }
 		return null;
 
+	}
+	
+	public static WebElement getElement (WebDriver driver,String sLocators)  {
+		
+		try  {
+			
+			return driver.findElement(By.xpath(sLocators));
+		}
+		catch (Exception e)  {
+			
+			e.getMessage();
+		}
+		
+		return null;
 	}
 	
 	public static void waitMethod(WebDriver driver, String sLocators) {
@@ -93,22 +82,15 @@ public class GenericMethods {
 
 	}
 	
+	
+	public static void capturePicture (WebDriver driver, String sLocator)  {
+		
+		waitToClickMethod(driver,sLocator);
+		((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.KEYCODE_CAMERA);
+		waitFor(2000);
+	    ((AndroidDriver) driver).tap(1, 644, 1564, 1);
 
-	public static List<WebElement> getElements(WebDriver driver, String sLocator) {
-
-        try {
-
-            if (sLocator.contains("//")) {
-                return driver.findElements(By.xpath(sLocator));
-            } 
-
-        } catch (Exception e) {
-
-           e.printStackTrace();
-        }
-
-        return null;
-    }
+	}
 
 	public static void waitFor(int time) {
 

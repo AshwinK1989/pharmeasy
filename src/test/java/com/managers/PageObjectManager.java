@@ -1,36 +1,50 @@
 package com.managers;
 
 import org.openqa.selenium.WebDriver;
-import com.pageobjects.DashboardPage;
-import com.pageobjects.SearchPage;
-import com.pageobjects.SignInPage;
+
+import com.pageobjects.CartPage;
+import com.pageobjects.DeliverToPage;
+import com.pageobjects.MedicineDetailsPage;
+import com.pageobjects.ResultsPage;
+import com.pageobjects.UploadPrescriptionPage;
 
 public class PageObjectManager {
 
-	    WebDriver driver;
-	    SignInPage signInPage;
-	    DashboardPage dashboardpage;
-	    SearchPage searchPage;
+	WebDriver driver;
+	DeliverToPage signInPage;
+	ResultsPage resultsPage;
+	MedicineDetailsPage medicineDetailsPage;
+	CartPage cartPage;
+	UploadPrescriptionPage uploadPrescriptionPage;
 
-	    public PageObjectManager(WebDriver driver) {
+	public PageObjectManager(WebDriver driver) {
 
-	        this.driver = driver;
-	    }
+		this.driver = driver;
+	}
 
-	    public SignInPage getSignInPage() {
+	public DeliverToPage getSignInPage() {
 
-	        return (signInPage == null) ? new SignInPage(driver) : signInPage;
-	    }
-	    
-	    public DashboardPage getDashboardPage() {
+		return (signInPage == null) ? new DeliverToPage(driver) : signInPage;
+	}
 
-	        return (dashboardpage == null) ? new DashboardPage(driver) : dashboardpage;
-	    }
-	    
-	    public SearchPage getSearchPage() {
+	public ResultsPage getResultsPage() {
 
-	        return (searchPage == null) ? new SearchPage(driver) : searchPage;
-	    }
+		return (resultsPage == null) ? new ResultsPage(driver) : resultsPage;
+	}
 
-	
+	public MedicineDetailsPage getMedicineDetailsPage() {
+
+		return (medicineDetailsPage == null) ? new MedicineDetailsPage(driver) : medicineDetailsPage;
+	}
+
+	public CartPage getCartPage() {
+
+		return (cartPage == null) ? new CartPage(driver) : cartPage;
+	}
+
+	public UploadPrescriptionPage getUploadPrescriptionPage() {
+
+		return (uploadPrescriptionPage == null) ? new UploadPrescriptionPage(driver) : uploadPrescriptionPage;
+	}
+
 }
