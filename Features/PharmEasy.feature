@@ -1,6 +1,6 @@
 Feature: Dashboard Functionality
 
-  Scenario Outline: To test the Dashboard Functionality
+  Scenario: To test the Dashboard Functionality
     And Click on GET Started Button
     And Select the City
     And Search for "Acne"
@@ -10,7 +10,3 @@ Feature: Dashboard Functionality
     And Click on Continue
     And Upload Prescription
     And Click on Proceed to Checkout
-    
-    Examples: 
-      | userName      | password |
-      | wer129@bankas.in | test |
