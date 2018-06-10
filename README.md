@@ -1,4 +1,3 @@
-
 List of softwares required to run:
 Java,
 node.js,
@@ -11,7 +10,7 @@ Set path to platforms folder and platform-tools folder in environment variable,
 In sdk folder of android, click on SDK Manager to download required api level of android.
 
 
-Clone the project on your machine using command: git clone git@github.com:AshwinK1989/shaadi.git
+Clone the project on your machine using command: git clone git@github.com:AshwinK1989/pharmeasy.git
 
 Open the project in Eclipse IDE.
 
@@ -24,4 +23,4 @@ Run the TestNG.xml file present under resources folder. OR Right click on the pr
 
 Make sure you have appium and related dependencies installed on your system.
 
-The report will be present in file: /shaadi/target/html/index.html
+The report will be present in file: /pharmeasy/target/html/index.html
